@@ -10,19 +10,26 @@ class LogoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: IconButton(
-            onPressed: () {
-               final auth =  Provider.of<AuthProvider>(context,listen: false);
-                        auth.onSignOut(success: (){
-                          
-                          ///home page
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
-                        }, failure: (){
-                          ///error
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Logout Error!")));
-                        });
-            },
-            icon: Icon(Icons.logout)),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        
+          children: [
+            IconButton(
+                onPressed: () {
+                  final auth = Provider.of<AuthProvider>(context, listen: false);
+                  auth.onSignOut(success: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/login', (route) => false);
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                  }, failure: () {
+                    ///error
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Logout Error!")));
+                  });
+                },
+                icon: Icon(Icons.logout)),
+                Text("Logout",style: TextStyle(color: Colors.blue,fontSize: 28,fontWeight: FontWeight.w700),)
+          ],
+        ),
       ),
     );
   }

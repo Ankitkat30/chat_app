@@ -26,7 +26,7 @@ class ChatCardSender extends StatelessWidget {
             child: CircleAvatar(
               backgroundImage: NetworkImage(
                 currentUser.imageUrl ??
-                    'https://starsunfolded.com/wp-content/uploads/2021/02/Amulya-Rattan.jpg',
+                    'https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg',
               ),
               radius: kCircle,
             ),

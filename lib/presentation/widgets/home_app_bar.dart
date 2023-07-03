@@ -36,7 +36,7 @@ class HomeAppBar extends StatelessWidget {
                           child: Image.network(
                             scale: 1,
                             value.userData.imageUrl ??
-                                'https://starsunfolded.com/wp-content/uploads/2021/02/Amulya-Rattan.jpg',
+                                'https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg',
                             fit: BoxFit.cover,
                             width: kDefault * 2.6,
                             height: kDefault * 2.6,
@@ -50,16 +50,12 @@ class HomeAppBar extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                                ?.copyWith(fontWeight: FontWeight.bold,color: Colors.blue),
                           ),
                         )
                       ],
                     ),
-                    const Icon(
-                      Icons.people_alt_outlined,
-                      color: Colors.blue,
-                      size: kDefault * 2,
-                    )
+                   
                   ],
                 ),
               );

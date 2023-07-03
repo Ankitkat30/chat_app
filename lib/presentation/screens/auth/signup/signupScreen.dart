@@ -13,11 +13,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        ChangeNotifierProvider(
-          create: (_) => AuthProvider(),
-          child: 
-        const SignUpView());
+    return ChangeNotifierProvider(
+        create: (_) => AuthProvider(), child: const SignUpView());
     // );
   }
 }
@@ -31,12 +28,13 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   void toLoginScreen({required BuildContext context}) {
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-        (route) => false);
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+    // Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => const LoginScreen(),
+    //     ),
+    //     (route) => false);
   }
 
   @override
@@ -55,7 +53,6 @@ class _SignUpViewState extends State<SignUpView> {
                 SizedBox(
                   height: size.height * .2,
                 ),
-               
 
                 ///text welcome
                 buildTextWelcome(context),
@@ -83,8 +80,6 @@ class _SignUpViewState extends State<SignUpView> {
           ?.copyWith(fontWeight: FontWeight.bold),
     );
   }
-
-  
 
   Padding buildEditTextBox(BuildContext context, Size size) {
     return Padding(
@@ -261,7 +256,6 @@ class _SignUpViewState extends State<SignUpView> {
             },
           ),
 
-         
           SizedBox(
             height: size.height * .02,
           ),
@@ -317,10 +311,16 @@ class _SignUpViewState extends State<SignUpView> {
                 final auth = Provider.of<AuthProvider>(context, listen: false);
                 auth.onSignUp(success: () {
                   ///register success
+                   ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Registration Successfull')));
+                  toLoginScreen(context: context);
+
                   print(
                       'register successes :${auth.authResponse.session?.toJson()}');
                 }, failure: () {
                   ///register error
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Registration not Successfull')));
                   print('register error');
                 });
               },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kraftbase_chat_app/core/core.dart';
 import 'package:kraftbase_chat_app/logic/provider/auth/auth_provider.dart';
 import 'package:kraftbase_chat_app/presentation/screens/auth/login/loginScreen.dart';
 import 'package:kraftbase_chat_app/presentation/screens/auth/signup/signupScreen.dart';
@@ -36,7 +37,13 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: LoginScreen()
+        initialRoute: client.auth.currentSession!=null?'/':'/login',
+        routes:{
+          '/':(context)=> HomeScreen(),
+          '/login':(context) => LoginScreen(),
+          '/signUp':(context) => SignUpScreen()
+        },
+       
       ),
     );
   }

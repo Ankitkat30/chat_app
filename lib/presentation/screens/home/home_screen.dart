@@ -58,6 +58,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       body: CustomScrollView(
         slivers: [
@@ -123,8 +125,8 @@ class _HomeViewState extends State<HomeView> {
                 },
               ),
               NavigationItem(
-                icon: Icons.people,
-                label: "People",
+                icon: Icons.history,
+                label: "History",
                 isActive: value.index == 2,
                 tab: () {
                   navProvider.tabChange(2);
